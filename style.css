@@ -1,0 +1,188 @@
+/* --- 1. CONFIGURAÇÕES GERAIS E FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --primary: #2c3e50;
+  --secondary: #27ae60;
+  --danger: #e74c3c;
+  --bg: #f4f7f6;
+  --white: #ffffff;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body { 
+  font-family: 'Poppins', sans-serif; 
+  background: var(--bg); 
+  margin: 0; 
+  padding: 20px; 
+  color: var(--primary); 
+  line-height: 1.6;
+}
+
+header { text-align: center; margin-bottom: 30px; }
+
+/* --- 2. DASHBOARD (Cards Superiores) --- */
+.dashboard { display: flex; gap: 15px; margin-bottom: 30px; }
+
+.card { 
+  background: var(--white); 
+  padding: 25px; 
+  border-radius: 15px; 
+  flex: 1; 
+  text-align: center; 
+  box-shadow: var(--shadow); 
+  border-top: 6px solid var(--primary); 
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.card:hover, .card:focus { 
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
+}
+
+.card.alert { border-top-color: var(--danger); }
+
+.card .valor { 
+  font-size: 2rem; 
+  font-weight: 600; 
+  display: block; 
+  margin: 10px 0; 
+  color: var(--primary);
+}
+
+/* Detalhes que aparecem ao clicar/focar no card */
+.detalhes-dashboard {
+  display: none; 
+  text-align: left;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
+  animation: fadeIn 0.3s ease;
+}
+
+.card:focus .detalhes-dashboard { display: block; }
+.detalhes-dashboard ul { list-style: none; padding: 0; margin: 0; }
+.detalhes-dashboard li { font-size: 0.85rem; padding: 6px 0; border-bottom: 1px solid #f9f9f9; }
+
+/* --- 3. FORMULÁRIO DE CADASTRO --- */
+.form-container { 
+  background: var(--white); 
+  padding: 20px; 
+  border-radius: 12px; 
+  margin-bottom: 25px; 
+  box-shadow: var(--shadow);
+}
+
+.inputs { display: flex; gap: 12px; }
+
+input { 
+  flex: 1; 
+  padding: 12px; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: var(--secondary);
+  outline: none;
+}
+
+.btn-main { 
+  background: var(--secondary); 
+  color: white; 
+  border: none; 
+  padding: 0 30px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-weight: 600;
+  transition: filter 0.2s;
+}
+
+.btn-main:hover { filter: brightness(1.1); }
+
+/* --- 4. LISTA DE INVENTÁRIO (Cards de Itens) --- */
+.item-list { list-style: none; padding: 0; }
+
+.item-list li { 
+  background: var(--white); 
+  padding: 18px 25px; 
+  border-radius: 12px; 
+  margin-bottom: 12px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  border-left: 6px solid var(--secondary);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  transition: all 0.2s ease; 
+}
+
+.item-list li:hover { 
+  background-color: #ffffff; 
+  transform: translateX(8px); 
+  box-shadow: var(--shadow);
+}
+
+/* Botões de controle (+, -, Editar, Excluir) */
+.controles { display: flex; gap: 8px; }
+
+.controles button {
+  width: 36px; height: 36px;
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
+  border-radius: 50%; 
+  border: none; 
+  cursor: pointer; 
+  transition: 0.3s;
+}
+
+.btn-add { background: #d4edda; color: #155724; }
+.btn-add:hover { background: var(--secondary); color: white; }
+
+.btn-sub { background: #fff3cd; color: #856404; }
+.btn-sub:hover { background: #ffc107; color: white; }
+
+.btn-edit { background: #e2e3e5; color: var(--primary); }
+.btn-edit:hover { background: var(--primary); color: white; }
+
+.btn-del { background: #f8d7da; color: var(--danger); }
+.btn-del:hover { background: var(--danger); color: white; }
+
+/* --- 5. HISTÓRICO DE MOVIMENTAÇÕES --- */
+.historico-scroll { 
+  max-height: 150px; 
+  overflow-y: auto; 
+  background: #fff; 
+  border: 1px solid #eee; 
+  border-radius: 10px; 
+  padding: 15px; 
+}
+
+.log-list { list-style: none; padding: 0; }
+.log-list li { 
+  font-size: 0.85rem; 
+  color: #666; 
+  padding: 6px 0; 
+  border-bottom: 1px solid #f5f5f5; 
+}
+
+/* --- 6. UTILITÁRIOS E ANIMAÇÕES --- */
+.status-ok { color: var(--secondary); font-weight: 600; }
+.status-critico { color: var(--danger); font-weight: 600; }
+
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(-10px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .dashboard { flex-direction: column; }
+    .inputs { flex-direction: column; }
+    .item-list li { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .controles { width: 100%; justify-content: space-between; }
+}
