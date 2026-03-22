@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Manager Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <h1>Gestão de Estoque Inteligente</h1>
+  </header>
+
+  <section class="dashboard">
+    <div class="card" tabindex="0">
+      <p>CAPITAL IMOBILIZADO</p>
+      <span class="valor">R$ <span id="dashTotal">0.00</span></span>
+      <div class="detalhes-dashboard">
+        <ul>
+          <li>Valor total investido em mercadoria ativa no pátio.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card alert" tabindex="0">
+      <p>REPOSIÇÃO NECESSÁRIA</p>
+      <span class="valor" id="dashCritico">0</span>
+      <small>Abaixo de 10 un.</small>
+      <div class="detalhes-dashboard">
+        <ul>
+          <li class="status-critico">Verifique os itens zerados ou próximos do limite de segurança.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" tabindex="0">
+      <p>GIRO DE ESTOQUE</p>
+      <span class="valor" id="dashItens">0</span>
+      <small>Unidades Totais</small>
+      <div class="detalhes-dashboard">
+        <ul>
+          <li>Soma de todas as unidades físicas presentes no inventário.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="form-container">
+      <h2>Novo Registro</h2>
+      <div class="inputs">
+        <input type="text" id="nome" placeholder="Produto">
+        <input type="number" id="quantidade" placeholder="Qtd">
+        <input type="number" id="preco" placeholder="Preço (R$)">
+        <button onclick="adicionarProduto()" class="btn-main">Cadastrar</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Inventário Ativo</h2>
+      <ul id="lista" class="item-list"></ul>
+    </section>
+
+    <section>
+      <div style="display:flex; justify-content: space-between; align-items: center;">
+        <h2>Histórico de movimentação</h2>
+        <button onclick="limparHistorico()" style="font-size:10px; cursor:pointer;">Limpar Log</button>
+      </div>
+      <div class="historico-scroll">
+        <ul id="listaHistorico" class="log-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
